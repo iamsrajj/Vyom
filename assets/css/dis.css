@@ -1,0 +1,269 @@
+
+body:before {
+    content: "";
+    position: fixed;
+    width: 100vw;
+       font-family: "Poppins", sans-serif;
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(10px);
+}
+
+/* Profile Card Styles */
+.profile-card {
+    position: absolute;
+    top: 50px; /* Adjust this value based on your navbar height */
+    right: 5px; /* Adjust for positioning */
+    width: 250px; /* Reduced width */
+    height: 350px; /* Increased height */
+    background: #E0F7FA; /* Solid background color */
+    border: 1px solid #DDD; /* Solid border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    z-index: 1000; /* To appear above other elements */
+}
+
+.profile-card-header {
+    background-color: #005700; /* Dark green header */
+    padding: 15px; /* Increased padding */
+    color: #fff; /* White text */
+    border-bottom: 1px solid #DDD; /* Solid border */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    text-align: center; /* Center text in header */
+}
+
+.profile-card-body {
+    padding: 15px;
+    color: #333; /* Dark text color */
+}
+
+.profile-card-body p {
+    margin: 10px 0; /* Spacing between paragraphs */
+    font-size: 0.9em; /* Default font size */
+}
+
+.profile-card-body p.email {
+    font-size: 0.75em; /* Reduced font size for email */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center vertically */
+    padding: 5px 0; /* Add padding for spacing */
+}
+
+.profile-card-body p .ref-code {
+    font-weight: bold; /* Make referral code bold */
+    font-size: 1.2em; /* Increased font size for referral code */
+}
+
+.profile-card h5 {
+    margin: 0;
+    font-size: 1.3em; /* Increased font size for header */
+}
+
+.profile-card h4 {
+    color: #fff; /* White text color */
+    font-size: 1.5em; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+    padding: 10px 0; /* Add some padding for spacing */
+    text-transform: uppercase; /* Make the text uppercase */
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+/* Contact Form Styles */
+.contact-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 350px;
+    padding: 80px 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px; /* Rounded corners for contact form */
+}
+
+.contact-form h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-form p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.contact-form input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="email"],
+.contact-form input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.contact-form input[type="submit"] {
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    background: red;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-top: 15%;
+}
+
+/* Receipt Styles */
+.receipt {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #301b1b;
+    border-radius: 5px;
+}
+
+.receipt p {
+    margin: 5px 0;
+}
+
+/* Container Styles */
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Table Styles */
+.table {
+    width: 100%; /* Ensure table takes full width */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.table thead th {
+    padding: 8px !important;
+    background-color: #005700; /* Dark green background for headers */
+    font-weight: bold; /* Bold text for headers */
+    text-align: center; /* Align text to the left */
+    font-family: "Poppins", sans-serif; /* Font style for headers */
+    color: #fff; /* White text color for better contrast */
+    border: 1px solid #ccc; /* Border for header cells */
+}
+
+.table tbody {
+    border: 1px solid #ccc; /* Add a border for the entire body */
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ccc; /* Add bottom border to rows */
+}
+
+.table tbody td {
+    padding: 10px; /* Padding for table cells */
+    border: 1px solid #ccc; /* Border for table cells on all sides */
+    color: black;  Text color for data 
+    font-family: "Poppins", sans-serif; /* Font style for data */
+    background-color: #f9f9f9; /* Light background for table rows */
+}
+
+/* Bold text style for specific cells */
+.table tbody td.bold {
+    font-weight: bold; /* Bold text for specific data */
+}
+
+/* View Button Styles */
+.view-button {
+    background-color: #800020; /* Dark green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 5px 15px; /* Padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition effect */
+    width: 100px; /* Set a fixed width */
+    margin-left: 30%; /* Set left margin to 30% */
+}
+
+.view-button:hover {
+    background-color: #004300; /* Darker green on hover */
+}
+
+/* Additional Styles */
+.hidden {
+    display: none; /* Use to hide elements */
+}
+
+/* General Heading Styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    width: 400px;
+    margin: 0 auto; /* Center the button horizontally */
+    display: block;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.cont {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(5, 4, 4, 0.3);
+    margin-left: 30px; /* Set left margin to 30px */
+    margin-right: 30px; /* Set right margin to 20px */
+    width: calc(100% - 50px); /* Adjust width to account for the left and right margins */
+    margin-top: 20px; /* Set top margin to 20px */
+    margin-bottom: 20px; /* Set bottom margin to 20px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add border to every column */
+.table tbody td {
+    border-right: 1px solid #ccc; /* Add right border to each column */
+}
+
+/* Note: The last column border removal has been removed */
+
+

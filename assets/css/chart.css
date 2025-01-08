@@ -1,0 +1,36 @@
+/* Full-page grid layout for 4 charts */
+body, html {
+    margin: 0; /* Remove default margin */
+    padding: 0; 
+    height: 100%; /* Full height for body and html */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the top */
+    background-color: #f4f4f4; /* Background color */
+}
+
+main {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+    grid-template-rows: repeat(2, 1fr); /* Create 2 equal rows */
+    gap: 20px; /* Spacing between charts */
+    width: 90vw; /* Full width */
+    height: 90vh; /* Height for the grid */
+    margin: 10px; /* Add some top margin for spacing */
+}
+
+#chartContainer {
+    display: flex; /* Flexbox for centering canvas */
+    justify-content: center; /* Center canvas horizontally */
+    align-items: center; /* Center canvas vertically */
+    background-color: white; /* White background for charts */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the chart container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 100%; /* Full height */
+}
+
+canvas {
+    width: 100% !important; /* Ensure canvas takes full width */
+    height: 100% !important; /* Ensure canvas takes full height */
+}

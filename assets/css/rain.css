@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  width: 200px; /* Adjust width as needed */
+  height: 200px; /* Adjust height as needed */
+}
+
+.running-cat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5); /* Optional: semi-transparent background */
+  z-index: 10; /* Ensures the GIF is on top */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

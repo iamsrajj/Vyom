@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card with Running Cat GIF</title>
+  <style>
+    .card {
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: #fff;
+      width: 200px; /* Adjust width as needed */
+      height: 200px; /* Adjust height as needed */
+      overflow: hidden; /* Ensure the GIF doesn't overflow outside the card */
+      text-align: center; /* Center text and image inside the card */
+    }
+
+    .running-cat {
+      position: absolute;
+      top: 0;
+      left: -100%; /* Start from outside the left side of the card */
+      width: 200%; /* Ensure the GIF covers the card width */
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10; /* Ensures the GIF is on top */
+      transition: left 1s linear; /* Smooth transition effect for the GIF */
+    }
+
+    .running-cat.running {
+      left: 0; /* Move to cover the card */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="../assets/img/rain_weather_icon.png" alt="Placeholder Image">
+    <div class="value">Rain</div>
+    <div class="description">0</div> <!-- Adjust this value to test -->
+    <div class="running-cat">
+      <img src="../assets/img/running_cat.gif" alt="Running Cat">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const card = document.querySelector('.card');
+      const runningCat = document.querySelector('.running-cat');
+      const description = parseInt(document.querySelector('.description').textContent);
+
+      // Automatically start running the cat if description value > 0
+      if (description > 0) {
+        runningCat.classList.add('running');
+      }
+
+      // Optional: add mouseover effect if needed
+      card.addEventListener('mouseover', function() {
+        runningCat.classList.add('running');
+      });
+
+      card.addEventListener('mouseleave', function() {
+        runningCat.classList.remove('running');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<html lang="en">
+  <head>
+    <title>Vyom - Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/agridootfavicon.ico" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="NovosEdge Pvt. Ltd." />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/img/AgriDoot.png"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
+    />
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="../assets/css/gis_map.css" rel="stylesheet" />
+    <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link
+      id="pagestyle"
+      href="../assets/css/material-dashboard.css?v=3.1.0"
+      rel="stylesheet"
+    />
+    <link
+      id="pagestyle"
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/dropdown.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+      html,
+      body {
+        overflow: hidden; /* Prevent scrolling */
+        height: 100%; /* Ensure body takes full height */
+        margin: 0; /* Reset margin */
+      }
+
+      #update-map-button {
+        background-color: #4caf50; /* Green background */
+        color: white; /* White text */
+        border: none; /* No border */
+        padding: 12px 24px; /* Padding: 12px top/bottom, 24px left/right */
+        text-align: center; /* Center text */
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Inline-block to fit the content */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        border-radius: 8px; /* Rounded corners */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+      }
+
+      #update-map-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05); /* Slight scale-up effect */
+      }
+
+      #update-map-button:focus {
+        outline: none; /* Remove outline on focus */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Shadow on focus */
+      }
+
+      #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr); /* 7 columns for the week */
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .day {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+
+      .empty {
+        background-color: #f9f9f9;
+      }
+
+      .highlighted {
+        background-color: #4caf50; /* Highlight color */
+        color: white;
+        font-weight: bold;
+      }
+
+      #right-drawer {
+        color: black;
+        font-weight: bold;
+      }
+      #right-drawer span {
+        color: black;
+        font-weight: normal;
+      }
+
+      #tiles-demo-container {
+        margin-top: 6%; /* Top and Bottom 40px, Left and Right 10px */
+        padding: 2px; /* 2px padding all around */
+        max-height: 100%;
+        max-width: 100%;
+        box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        #calendar {
+          grid-template-columns: repeat(
+            5,
+            1fr
+          ); /* 5 columns on medium screens */
+        }
+
+        #drawer-toggle {
+          font-size: 24px; /* Adjust button size for medium screens */
+        }
+      }
+
+      @media (max-width: 768px) {
+        #calendar {
+          grid-template-columns: repeat(4, 1fr); /* 4 columns on tablets */
+        }
+
+        .dropdown-container {
+          flex-direction: column;
+          padding: 10px;
+        }
+
+        .dropdown-container button,
+        .dropdown-container select {
+          width: 100%;
+        }
+
+        #drawer-toggle {
+          font-size: 22px;
+        }
+
+        #right-drawer {
+          width: 250px; /* Adjust the drawer width on smaller screens */
+        }
+
+        @media (max-width: 480px) {
+          #calendar {
+            grid-template-columns: repeat(
+              3,
+              1fr
+            ); /* 3 columns on smaller devices */
+          }
+
+          .dropdown-container {
+            padding: 5px;
+          }
+
+          #drawer-toggle {
+            font-size: 20px;
+          }
+
+          #right-drawer {
+            width: 200px;
+          }
+
+          #tiles-demo-container {
+            margin-top: 10%;
+          }
+        }
+
+        /* Video Background */
+        #background-video {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          min-width: 100%;
+          min-height: 100%;
+          z-index: -2;
+        }
+
+        #blur-layer {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          backdrop-filter: blur(10px);
+          z-index: -1;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="g-sidenav-show bg-gray-200">
+    <div id="loading-bar"></div>
+    <!-- Add this to gis_farm.html -->
+    <div id="loading-overlay" style="display: none">
+      <div class="loader"></div>
+    </div>
+
+    <button id="drawer-toggle" class="btn" style="position: fixed; right: 10px">
+      <i class="material-icons">menu</i>
+    </button>
+
+    <!-- Navigation Drawer -->
+    <nav id="right-drawer" class="nav-drawer">
+      <ul>
+        <li id="name">Farmer Name: <span id="polygon-name-value">N/A</span></li>
+        <li id="phone">Phone: <span id="phone-value">N/A</span></li>
+        <li id="village">Village: <span id="village-value">N/A</span></li>
+        <li id="polygon_name">Farm Name: <span id="polygon-name">N/A</span></li>
+        <li id="polygon_area">
+          Farm Area: <span id="polygon-area-value">N/A</span>
+        </li>
+        <li id="crop_name">Crop Name: <span id="crop-name-value">N/A</span></li>
+        <li id="sowing_date">
+          Sowing Date: <span id="sowing-date-value">N/A</span>
+        </li>
+        <li id="plan_type">Plan Type: <span id="plan-type-value">N/A</span></li>
+
+        <li id="plan_dur">
+          Plan Expiry: <span id="plan-duration-value">N/A</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Dropdown Section -->
+    <div class="dropdown-container" style="position: absolute; width: 100%">
+      <button class="observation-button">Observation</button>
+      <select id="index-select">
+        <!-- Crop Health Category -->
+        <optgroup label="Crop Health" class="dropdown-header container">
+          <option value="ndvi">
+            NDVI (Normalized Difference Vegetation Index)
+          </option>
+          <option value="ndrex">
+            NDREX (Normalized Difference Red Edge Index Extended)
+          </option>
+          <option value="evi">EVI (Enhanced Vegetation Index)</option>
+          <option value="msavi2">
+            MSAVI2 (Modified Soil-Adjusted Vegetation Index)
+          </option>
+        </optgroup>
+
+        <!-- Soil Health Category -->
+        <optgroup label="Soil Health" class="dropdown-header container">
+          <option value="soc_swir">SOC_SWIR</option>
+          <option value="soc_vis">
+            SOC_VIS - Soil Organic Carbon (Visible Spectra)
+          </option>
+        </optgroup>
+
+        <!-- Irrigation Category -->
+        <optgroup label="Irrigation" class="dropdown-header container">
+          <option value="ndwi">NDWI - Normalized Difference Water Index</option>
+          <option value="ndmi">
+            NDMI - Normalized Difference Moisture Index
+          </option>
+        </optgroup>
+      </select>
+      <span id="selected-date">Select a date</span>
+      <button class="calendar-button" id="calendar-button">
+        <i class="material-icons">calendar_today</i>
+      </button>
+
+      <button id="update-map-button">Update Map</button>
+      <button>Compare</button>
+      <a href="../html/inroll_device.html" id="home">Home Page</a>
+    </div>
+
+    <div id="tiles-demo-container"></div>
+
+    <video autoplay muted loop id="background-video" style="position: fixed">
+      <source src="../assets/img/ab.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div id="blur-layer"></div>
+
+    <script src="../app/view.js"></script>
+    <script src="../app/user_info.js"></script>
+    <script src="../app/gis_map.js"></script>
+  </body>
+</html>

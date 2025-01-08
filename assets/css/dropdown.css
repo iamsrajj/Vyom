@@ -1,0 +1,112 @@
+.main {
+  width: 100%;
+  
+}
+
+/* General Menu Styling */
+.mainnav {
+  display: flex; /* Use flexbox to center items */
+  justify-content: center; /* Center the items horizontally */
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+}
+
+.dropdown {
+  position: absolute;
+  width: 150px;
+   top: 100%; 
+  opacity: 0;
+  visibility: hidden;
+  transition: ease-out 0.35s;
+}
+
+.mainnav li {
+  float: left;
+  padding: 5px;
+  background: maroon;
+  border-radius: 10px;
+  
+    
+
+}
+
+.mainnav li:first-child {
+  border: none;
+}
+
+.mainnav li a {
+  display: block;
+  padding: 2px 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.mainnav li:hover {
+  background: #fff;
+}
+
+.mainnav li:hover a {
+  color: maroon;
+}
+
+/* First Level */
+.subs {
+  left: -45px;
+  position: relative;
+  top: 0px;
+  width: 175px;
+  border-left: none !important;
+  border-bottom: 1px dotted #fff !important;
+}
+
+.subs:last-child {
+  border: none !important;
+}
+
+.hassubs:hover .dropdown,
+.hassubs .hassubs:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mainnav li:hover ul a,
+.mainnav li:hover ul li ul li a {
+  color: white;
+}
+
+.mainnav li ul li:hover,
+.mainnav li ul li ul li:hover {
+  background: #fff;
+}
+
+.mainnav li ul li:hover a,
+.mainnav li ul li ul li:hover a {
+  color: maroon;
+}
+
+/* Second Level */
+.hassubs .hassubs .dropdown .subs {
+  left: 25px;
+  position: relative;
+  width: 165px;
+  top: 0px;
+}
+
+.hassubs .hassubs .dropdown {
+  position: absolute;
+  width: 150px;
+  left: 120px;
+  top: 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: ease-out 0.35s;
+  
+}
+

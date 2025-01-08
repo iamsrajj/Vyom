@@ -1,0 +1,36 @@
+.card-with-background {
+  background-size: cover;
+  background-position: center;
+  color: white; /* Ensures text is readable against the background image */
+  position: relative;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: darken header area for readability */
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: darken footer area for readability */
+}
+
+.card {
+  border: none; /* Optional: remove border if not needed */
+}
+
+
+/*#sidenav-main {
+  background-image: url('../assets/img/images.jpeg'); /* Replace with the path to your background image */
+  background-size: cover;  Ensure the background image covers the entire element 
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+*/
+
+/* Assuming you are adding this to an external stylesheet or a <style> block */
+.sidenav {
+  background-image: url('../assets/img/images.jpeg'); /* Replace with the path to your image */
+  background-size: cover; /* Ensures the image covers the entire element */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+

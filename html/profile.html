@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vyom - Profile</title>
+    <link rel="icon" type="image/x-icon" href="/agridootfavicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Profile card styles */
+      .profile-card {
+        position: absolute;
+        top: 50px; /* Adjust this value based on your navbar height */
+        left: 0; /* Adjust for positioning */
+        width: 300px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none; /* Hidden by default */
+        z-index: 1000; /* To appear above other elements */
+      }
+      .profile-card-header {
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        border-radius: 8px 8px 0 0;
+      }
+      .profile-card-body {
+        padding: 15px;
+      }
+      .profile-card h5 {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Profile Card -->
+    <div class="profile-card" id="profile-card">
+      <div class="profile-card-header"></div>
+      <div class="profile-card-body">
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> john.doe@example.com</p>
+        <p><strong>Phone:</strong> +1234567890</p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Toggle the profile card on click
+        $("#profile-icon").click(function (event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          $("#profile-card").toggle(); // Toggle the visibility of the profile card
+        });
+
+        // Close the card when clicking outside of it
+        $(document).click(function (event) {
+          if (!$(event.target).closest("#profile-card, #profile-icon").length) {
+            $("#profile-card").hide(); // Hide the card if clicked outside
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

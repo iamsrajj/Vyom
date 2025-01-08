@@ -1,0 +1,79 @@
+.profile-card {
+    position: absolute;
+    top: 50px; /* Adjust this value based on your navbar height */
+    right: 5px; /* Adjust for positioning */
+    width: 300px; /* Increased width */
+    height: 350px; /* Increased height */
+    background: #E0F7FA; /* Solid background color */
+    border: 1px solid #DDD; /* Solid border */
+    border-radius: 12px; /* Rounded corners for all sides */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    z-index: 1000; /* To appear above other elements */
+}
+
+.profile-card-header {
+    background-color: #800020; /* red using hex code */
+    padding: 15px; /* Increased padding */
+    color: #fff; /* White text */
+    border-bottom: 1px solid #DDD; /* Solid border */
+    border-radius: 12px 12px 0 0; /* Rounded corners for the top */
+    text-align: center; /* Center text in header */
+}
+
+.profile-card-body {
+    padding: 15px;
+    color: #333; /* Dark text color */
+}
+
+.profile-card-body p {
+    margin: 10px 0; /* Spacing between paragraphs */
+    font-size: 0.9em; /* Default font size */
+}
+
+/* Email paragraph styling */
+.profile-card-body p.email {
+    font-size: 0.75em; /* Reduced font size for email */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center vertically */
+    padding: 10px 0; /* Increased padding for spacing */
+}
+
+/* Referral code styling */
+.profile-card-body p .ref-code {
+    font-weight: bold; /* Make referral code bold */
+    font-size: 1.2em; /* Increased font size for referral code */
+}
+
+.profile-card h5 {
+    margin: 0;
+    font-size: 1.3em; /* Increased font size for header */
+}
+
+.profile-card h4 {
+    color: #fff; /* White text color */
+    font-size: 1.5em; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+    padding: 10px 0; /* Add some padding for spacing */
+    text-transform: uppercase; /* Make the text uppercase */
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+/* Logout button styling */
+.logout-button {
+    display: block; /* Make it a block element */
+    width: 60%; /* Set a width for the button */
+    margin: 15px auto; /* Center the button horizontally and add margin */
+    padding: 10px; /* Add padding */
+    background-color:  #005700; /* Red background */
+    color: hsl(195, 11%, 93%); /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor on hover */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center the text inside the button */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+

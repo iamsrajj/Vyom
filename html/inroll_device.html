@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vyom - Home</title>
+    <title>Home - AgriDoot</title>
     <link rel="icon" type="image/x-icon" href="/agridootfavicon.ico" />
     <meta charset="utf-8" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -14,8 +14,8 @@
       sizes="76x76"
       href="../assets/img/AgriDoot.png"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -104,7 +104,7 @@
         <span
           class="ms-1 font-weight-bold text-white"
           style="margin-left: 0.5rem !important"
-          >Vyom Dashboard</span
+          >Agronomist Panel</span
         >
       </div>
       <hr class="horizontal light mt-0 mb-2" />
@@ -121,17 +121,16 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item">
-            <a class="nav-link text-white"   id="monitor">
+          <li class="nav-item">
+            <a class="nav-link text-white" id="device">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
                 <i class="material-icons opacity-10">monitor</i>
               </div>
-              <span class="nav-link-text ms-1">Monitor</span>
+              <span class="nav-link-text ms-1">AG - Pro</span>
             </a>
           </li>
- -->
         </ul>
       </div>
       <div class="sidenav-footer position-absolute w-100 bottom-0"></div>
@@ -155,7 +154,7 @@
               <a
                 href="#"
                 class="nav-link text-body font-weight-bold px-0"
-                style="font-size: 20px"
+                style="font-size: 25p; color: white !important"
                 id="profile-icon"
               >
                 <i class="fa fa-user me-sm-1"></i>
@@ -178,7 +177,7 @@
             <strong>Referal Code:</strong>
             <span class="ref-code" id="ref_code"></span>
           </p>
-          <a href="../index.html" class="logout-button">Logout</a>
+          <a href="../html/sign-up.html" class="logout-button">Logout</a>
         </div>
       </div>
 
@@ -199,13 +198,24 @@
       </div>
     </main>
 
+    <httpProtocol>
+      <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+        <add name="Access-Control-Allow-Headers" value="Content-Type" />
+        <add
+          name="Access-Control-Allow-Methods"
+          value="GET, POST, PUT, DELETE, OPTIONS"
+        />
+      </customHeaders>
+    </httpProtocol>
+
     <script src="../app/list.js"></script>
     <script src="../app/ref.js"></script>
-    <script src="../app/monitor.js"></script>
+    <!-- <script src="../app/monitor.js"></script> -->
 
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
-    <!-- <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script> -->
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title> Monitor | Agronomist Panel</title>
+    <title>AgriDoot - Pro</title>
+    <link rel="icon" type="image/x-icon" href="/agridootfavicon.ico" />
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -13,10 +14,12 @@
       sizes="76x76"
       href="../assets/img/AgriDoot.png"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   
     <link
       rel="icon"
       type="image/png"
-      href="../assets/img/agridootfavicon.ico"
+      
     />
     <link
       rel="stylesheet"
@@ -95,12 +98,16 @@
       alt="main_logo"
       style="margin: 10px; height: 200px"
     />
+    
     <span
       class="ms-1 font-weight-bold text-white"
-      style="margin-left: 0.5rem !important"
-    >
+      style="margin-left: 0.5rem !important">
       Agronomist Panel
     </span>
+
+    
+    
+
   </div>
 
   <hr class="horizontal light mt-0 mb-2" />
@@ -120,7 +127,7 @@
 
  
 
-     <li class="nav-item">
+     <!-- <li class="nav-item">
             <a class="nav-link text-white"  href="../html/report.html">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -129,7 +136,8 @@
               </div>
               <span class="nav-link-text ms-1">Report</span>
             </a>
-          </li>
+          </li> -->
+          <div id="apiResponse"></div>
 
 
 
@@ -166,6 +174,16 @@
      
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <h1>Monitoring Dashboard</h1>
+
+    <span id="date_time"  style="
+    position: absolute;
+  font-weight: bold;
+    top: 20px; 
+    right: 20px;"></span>
+   <button id="refresh_button" style="position: absolute; top: 20px; left: 50px; font-weight: bold;">Refresh</button>
+   
+  </span>
+
     <div class="card-container">
       <!-- Repeat this card structure 18 times -->
       <!-- Card 1 -->
@@ -173,7 +191,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/thermometer_icon.png" alt="Placeholder Image">
           <div class="value">Temperature</div>
-          <div class="description">Static Value</div>
+           <span id="atm_temp"></span>
         </div>
       </div>
 
@@ -182,7 +200,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/atm_pressure_icon.png" alt="Placeholder Image">
           <div class="value">Pressure</div>
-          <div class="description">Static Value</div>
+          <span id="atm_pressure"></span>
         </div>
       </div>
 
@@ -190,14 +208,15 @@
         <div style="text-align: center;">
           <img src="../assets/img/humidity_icon.png" alt="Placeholder Image">
           <div class="value">Humidity</div>
-          <div class="description">Static Value</div>
+          <span id="atm_humid"></span>
         </div>
+
       </div>
        <div class="card">
         <div style="text-align: center;">
           <img src="../assets/img/wind_speed_icon.png" alt="Placeholder Image">
           <div class="value">Wind Speed</div>
-          <div class="description">Static Value</div>
+          <span id="wind_spped"></span>
         </div>
       </div>
 
@@ -206,20 +225,17 @@
         <div style="text-align: center;">
           <img src="../assets/img/wind_speed_direction_icon.png" alt="Placeholder Image">
           <div class="value">Wind Direction</div>
-          <div class="description">Static Value</div>
+          <span id="wind_dir"></span>
         </div>
       </div>
 
        <div class="card">
          <div style="text-align: center;">
-        <div class="running-cat">
-          <img src="../assets/img/running_cat.gif" alt="Running Cat">
-        </div>
-        <div class="content">
+        
           <img src="../assets/img/rain_weather_icon.png" alt="Weather Icon" class="weather-icon">
           <div class="value">Rain</div>
-          <div class="description" id="descriptionValue">0</div> <!-- Example description value -->
-        </div>
+          <span id="rain"></span>
+        
       </div>
       </div>
 
@@ -228,7 +244,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/leaf_icon.png" alt="Placeholder Image">
           <div class="value">Leaf Wetness</div>
-          <div class="description">Static Value</div>
+          <span id="leaf"></span>
         </div>
       </div>
 
@@ -237,7 +253,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/lux_icon.png" alt="Placeholder Image">
           <div class="value">LUX</div>
-          <div class="description">Static Value</div>
+          <span id="lux"></span>
         </div>
       </div>
       
@@ -245,14 +261,14 @@
         <div style="text-align: center;">
           <img src="../assets/img/uv_icon.png" alt="Placeholder Image">
           <div class="value">UV</div>
-          <div class="description">Static Value</div>
+          <span id="uv"></span>
         </div>
       </div>
        <div class="card">
         <div style="text-align: center;">
           <img src="../assets/img/thermometer_icon.png" alt="Placeholder Image">
           <div class="value">Soil Temp</div>
-          <div class="description">Static Value</div>
+          <span id="s_temp"></span>
         </div>
       </div>
 
@@ -261,7 +277,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/soil_moist_icon.png" alt="Placeholder Image">
           <div class="value">Soil Moist</div>
-          <div class="description">Static Value</div>
+          <span id="s_hum"></span>
         </div>
       </div>
       
@@ -269,14 +285,14 @@
         <div style="text-align: center;">
           <img src="../assets/img/root_temp_icon.png" alt="Placeholder Image">
           <div class="value">Root Temp</div>
-          <div class="description">Static Value</div>
+          <span id="u_temp"></span>
         </div>
       </div>
        <div class="card">
         <div style="text-align: center;">
           <img src="../assets/img/root_moist_icon.png" alt="Placeholder Image">
           <div class="value">Root Moist</div>
-          <div class="description">Static Value</div>
+          <span id="u_moist"></span>
         </div>
       </div>
 
@@ -285,7 +301,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/e_conductivity.png" alt="Placeholder Image">
           <div class="value">E Conductivity</div>
-          <div class="description">Static Value</div>
+          <span id="u_con"></span>
         </div>
       </div>
       
@@ -293,14 +309,14 @@
         <div style="text-align: center;">
           <img src="../assets/img/ph_meter.png" alt="Placeholder Image">
           <div class="value">PH</div>
-          <div class="description">Static Value</div>
+          <span id="u_ph"></span>
         </div>
       </div>
        <div class="card">
         <div style="text-align: center;">
           <img src="../assets/img/nitrogen_icon.png" alt="Placeholder Image">
           <div class="value">N</div>
-          <div class="description">Static Value</div>
+          <span id="nitrogen"></span>
         </div>
       </div>
 
@@ -309,7 +325,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/phosphorus_icon.png" alt="Placeholder Image">
           <div class="value">P</div>
-          <div class="description">Static Value</div>
+          <span id="phosphorus"></span>
         </div>
       </div>
       
@@ -317,7 +333,7 @@
         <div style="text-align: center;">
           <img src="../assets/img/potassium_icon.png" alt="Placeholder Image">
           <div class="value">K</div>
-          <div class="description">Static Value</div>
+          <span id="potassium"></span>
         </div>
       </div>
 
@@ -333,8 +349,12 @@
 
 
 
-    <script src="../app/list.js"></script>
+    
     <script src="../app/rain.js"></script>
+    
+    <script src="../app/device.js"></script>
+    <!-- <script src="../app/list.js"></script> -->
+
     <script src="../app/monitor.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -343,7 +363,7 @@
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
-    <script src="../app/disease_reg.js"></script>
+    
     <script src="../app/link.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>

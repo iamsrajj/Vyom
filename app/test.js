@@ -99,6 +99,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial map load
     updateMapData();
 
-    // Update on button click
+    // Manual map update
     updateMapButton.addEventListener('click', updateMapData);
+
+    // Reload logic to run 3 times
+    let reloadCount = localStorage.getItem("reloadCount") || 0;
+
+    if (reloadCount < 2) {
+        loadingOverlay.style.display = "flex";
+        setTimeout(() => {
+            reloadCount++;
+            localStorage.setItem("reloadCount", reloadCount);
+            location.reload();
+        }, 3000); // You can increase this to 3000 or 5000 for smoother experience
+    } else {
+        localStorage.removeItem("reloadCount");
+        loadingOverlay.style.display = "none";
+    }
 });

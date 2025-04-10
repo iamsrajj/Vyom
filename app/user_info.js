@@ -108,9 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Map data update on button click
     updateMapButton.addEventListener('click', updateMapData);
 
-    // Manual map update
-    updateMapButton.addEventListener('click', updateMapData);
-
     // Reload logic to run 3 times
     let reloadCount = localStorage.getItem("reloadCount") || 0;
 
